@@ -12,7 +12,7 @@ namespace CompraVenta
         private string name;
         private string email;
         private DateTime dateOfBirth;
-
+        
         public Customer(string name, string email, DateTime dateOfBirth)
         {
             this.ShouldHaveValidName(name);
@@ -43,13 +43,7 @@ namespace CompraVenta
 
         private void ShouldBeOlderThan18Ages(DateTime dateOfBirth)
         {
-            DateTime today = DateTime.Today;
-            int age = today.Year - dateOfBirth.Year;
-            if (dateOfBirth.Date > today.AddYears(-age))
-            {
-                age--;
-            }
-            if (age < 18)
+            if (AgeCalculator.calculateYearsOldFromDate(dateOfBirth) < 18)
             {
                 throw new Exception("The customer must be older than 18 ages");
             }
@@ -74,13 +68,7 @@ namespace CompraVenta
         }
         private int Age()
         {
-            DateTime today = DateTime.Today;
-            int age = today.Year - this.dateOfBirth.Year;
-            if (this.dateOfBirth.Date > today.AddYears(-age))
-            {
-                age--;
-            }
-            return age;
+            return AgeCalculator.calculateYearsOldFromDate(this.dateOfBirth);
         }
     }
 }
