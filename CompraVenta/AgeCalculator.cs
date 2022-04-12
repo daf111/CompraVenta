@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CompraVenta
 {
-    public class AgeCalculator
+    public static class AgeCalculator
     {
-        public int calculateYearsOldFromDate(DateTime dateOfBirth)
+        public static int calculateYearsOldFromDate(DateTime dateOfBirth)
         {
             DateTime today = DateTime.Today;
             int age = today.Year - dateOfBirth.Year;

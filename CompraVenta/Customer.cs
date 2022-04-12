@@ -12,12 +12,9 @@ namespace CompraVenta
         private string name;
         private string email;
         private DateTime dateOfBirth;
-        private AgeCalculator ageCalculator;
-
+        
         public Customer(string name, string email, DateTime dateOfBirth)
         {
-            this.ageCalculator = new AgeCalculator();
-
             this.ShouldHaveValidName(name);
 
             this.ShouldHaveValidEmailSyntax(email);
@@ -46,7 +43,7 @@ namespace CompraVenta
 
         private void ShouldBeOlderThan18Ages(DateTime dateOfBirth)
         {
-            if (this.ageCalculator.calculateYearsOldFromDate(dateOfBirth) < 18)
+            if (AgeCalculator.calculateYearsOldFromDate(dateOfBirth) < 18)
             {
                 throw new Exception("The customer must be older than 18 ages");
             }
@@ -71,7 +68,7 @@ namespace CompraVenta
         }
         private int Age()
         {
-            return this.ageCalculator.calculateYearsOldFromDate(this.dateOfBirth);
+            return AgeCalculator.calculateYearsOldFromDate(this.dateOfBirth);
         }
     }
 }
