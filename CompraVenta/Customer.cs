@@ -66,7 +66,7 @@ namespace CompraVenta
         {
             return "Hi, my name is " + this.Name() + " and my email is " + this.Email() + " and I am " + this.Age() + " years old";
         }
-        private int Age()
+        public int Age()
         {
             return AgeCalculator.calculateYearsOldFromDate(this.dateOfBirth);
         }
