@@ -23,6 +23,26 @@ namespace UnitTest
             Assert.Equal(22, calculatedAge);
         }
 
+        [Theory]
+        [InlineData("2000-01-01", 22)]
+        [InlineData("1999-01-01", 23)]
+        [InlineData("2001-01-01", 21)]
+        public void Customer_CustomAge_ValidAge(string dateOfBirth, int expectedAge)
+        {
+            //Arrange
+            Customer customer = new Customer(
+                "Juan Perez",
+                "jperez@gmail.com",
+                DateTime.Parse(dateOfBirth)
+            );
+
+            //Act
+            int calculatedAge = customer.Age();
+
+            //Assert
+            Assert.Equal(expectedAge, calculatedAge);
+        }
+
         [Fact]
         public void Customer_WithInvalidAge_ThrowException()
         {

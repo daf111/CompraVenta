@@ -12,14 +12,16 @@ namespace CompraVenta
             Customer customer = new Customer(
                 "Juan Perez",
                 "jperez@gmail.com",
-                DateTime.Parse("2000-01-01")
+                DateTime.Parse("2000-01-01"),
+                new SQLServerRepository()
             );
             customers.Add(customer);
 
             Customer customer2 = new Customer(
                 "Ana Martinez",
                 "amartinez@gmail.com",
-                DateTime.Parse("1995-01-01")
+                DateTime.Parse("1995-01-01"),
+                new SQLServerRepository()
             );
             customers.Add(customer2);
 
