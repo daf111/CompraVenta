@@ -1,4 +1,5 @@
 using CompraVenta;
+using CompraVenta.Domain;
 using System;
 using Xunit;
 

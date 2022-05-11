@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompraVenta.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace CompraVenta
@@ -12,16 +13,14 @@ namespace CompraVenta
             Customer customer = new Customer(
                 "Juan Perez",
                 "jperez@gmail.com",
-                DateTime.Parse("2000-01-01"),
-                new SQLServerRepository()
+                DateTime.Parse("2000-01-01")
             );
             customers.Add(customer);
 
             Customer customer2 = new Customer(
                 "Ana Martinez",
                 "amartinez@gmail.com",
-                DateTime.Parse("1995-01-01"),
-                new SQLServerRepository()
+                DateTime.Parse("1995-01-01")
             );
             customers.Add(customer2);
 
