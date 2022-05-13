@@ -12,9 +12,9 @@ namespace CompraVenta.Application
             this.repository = repository;
         }
 
-        public void execute(Customer customer)
+        public void execute(CustomerDTO customerDTO)
         {
-            this.repository.Add(customer);
+            this.repository.Add(new Customer(customerDTO.name, customerDTO.email, customerDTO.dateOfBirth));
         }
     }
 }

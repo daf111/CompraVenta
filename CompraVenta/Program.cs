@@ -13,21 +13,21 @@ namespace CompraVenta
             var customerCreator = diManager.Resolve<CustomerCreator>();
             var customerIndexer = diManager.Resolve<CustomerIndexer>();
 
-            Customer customer = new Customer(
+            CustomerDTO customer = new CustomerDTO(
                 "Juan Perez",
                 "jperez@gmail.com",
                 DateTime.Parse("2000-01-01")
             );
             customerCreator.execute(customer);
 
-            Customer customer2 = new Customer(
+            CustomerDTO customer2 = new CustomerDTO(
                 "Ana Martinez",
                 "amartinez@gmail.com",
                 DateTime.Parse("1995-01-01")
             );
             customerCreator.execute(customer2);
 
-            foreach (Customer actualCustomer in customerIndexer.execute())
+            foreach (CustomerDTO actualCustomer in customerIndexer.execute())
             {
                 Console.WriteLine(actualCustomer.Presentation());
             }
