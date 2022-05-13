@@ -9,12 +9,14 @@ namespace CompraVenta.Domain
 {
     public class Customer
     {
+        private Identity id;
         private Name name;
         private Email email;
         private DateOfBirthOlderThan18Ages dateOfBirth;
         
         public Customer(string name, string email, DateTime dateOfBirth)
         {
+            this.id = new Identity(Guid.NewGuid());
             this.name = new Name(name);
             this.email = new Email(email);
             this.dateOfBirth = new DateOfBirthOlderThan18Ages(dateOfBirth);
@@ -24,7 +26,10 @@ namespace CompraVenta.Domain
         {
             this.email = new Email(email);
         }
-
+        public Guid Id()
+        {
+            return this.id.Value();
+        }
         public string Name()
         {
             return this.name.Value();
