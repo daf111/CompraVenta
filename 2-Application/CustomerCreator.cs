@@ -14,7 +14,7 @@ namespace CompraVenta.Application
 
         public void execute(Customer customer)
         {
-            repository.Add(customer);
+            this.repository.Add(customer);
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using CompraVenta.Application;
+﻿
+using CompraVenta.Application;
 using CompraVenta.Domain;
-using CompraVenta.Infraestructure;
 using System;
-using System.Collections.Generic;
 
 namespace CompraVenta
 {
@@ -10,8 +9,9 @@ namespace CompraVenta
     {
         static void Main(string[] args)
         {
-            CustomerRepository repository = new CustomerInMemoryRepository();
-            CustomerCreator customerCreator = new CustomerCreator(repository);
+            var diManager = new DependencyInyectionManager();
+            var customerCreator = diManager.Resolve<CustomerCreator>();
+            var customerIndexer = diManager.Resolve<CustomerIndexer>();
 
             Customer customer = new Customer(
                 "Juan Perez",
@@ -27,7 +27,7 @@ namespace CompraVenta
             );
             customerCreator.execute(customer2);
 
-            foreach (Customer actualCustomer in repository.GetAll())
+            foreach (Customer actualCustomer in customerIndexer.execute())
             {
                 Console.WriteLine(actualCustomer.Presentation());
             }
