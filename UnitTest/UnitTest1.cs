@@ -1,5 +1,5 @@
 using CompraVenta;
-using CompraVenta.Domain;
+using CompraVenta.Domain.Entities;
 using System;
 using Xunit;
 

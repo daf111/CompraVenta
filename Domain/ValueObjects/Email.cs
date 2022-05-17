@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompraVenta.Domain
+namespace CompraVenta.Domain.ValueObjects
 {
     public class Email: StringValueObject
     {

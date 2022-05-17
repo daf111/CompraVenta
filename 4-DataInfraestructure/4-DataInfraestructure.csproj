@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>_4_DataInfraestructure</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\4-DataInfraestructure\4-DataInfraestructure.csproj" />
-    <ProjectReference Include="..\Application\2-Application\2-Application.csproj" />
+    <ProjectReference Include="..\9-Transversal\9-Transversal.csproj" />
     <ProjectReference Include="..\Domain\3-Domain.csproj" />
   </ItemGroup>
 
