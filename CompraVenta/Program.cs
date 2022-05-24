@@ -1,6 +1,6 @@
 ﻿using CompraVenta.Application;
+using CompraVenta.Application.DTO;
 using CompraVenta.DataInfraestructure.Repositories;
-using CompraVenta.Domain.Entities;
 using CompraVenta.Domain.Repositories;
 using System;
 
@@ -23,21 +23,21 @@ namespace CompraVenta
             CustomerCreator customerCreator = new CustomerCreator(repository);
             CustomerEnumerator customerEnumerator = new CustomerEnumerator(repository);
 
-            Customer customer = Customer.CreateNewCustomer(
+            CustomerDTO customer = new CustomerDTO(
                 "Juan Perez",
                 "jperez@gmail.com",
                 DateTime.Parse("2000-01-01")
             );
             customerCreator.Execute(customer);
 
-            Customer customer2 = Customer.CreateNewCustomer(
+            CustomerDTO customer2 = new CustomerDTO(
                 "Ana Martinez",
                 "amartinez@gmail.com",
                 DateTime.Parse("1995-01-01")
             );
             customerCreator.Execute(customer);
 
-            foreach (Customer actualCustomer in customerEnumerator.Execute())
+            foreach (CustomerDTO actualCustomer in customerEnumerator.Execute())
             {
                 Console.WriteLine(actualCustomer.Presentation());
             }

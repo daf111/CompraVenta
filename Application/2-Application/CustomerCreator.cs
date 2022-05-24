@@ -1,4 +1,5 @@
-﻿using CompraVenta.Domain.Entities;
+﻿using CompraVenta.Application.DTO;
+using CompraVenta.Domain.Entities;
 using CompraVenta.Domain.Repositories;
 using System;
 
@@ -13,9 +14,15 @@ namespace CompraVenta.Application
             this.repository = repository;
         }
 
-        public void Execute(Customer customer)
+        public void Execute(CustomerDTO customerDTO)
         {
-            this.repository.Add(customer);
+            this.repository.Add(
+                Customer.CreateNewCustomer(
+                    customerDTO.Name(),
+                    customerDTO.Email(),
+                    customerDTO.DateOfBirth()
+                )
+            );
         }
     }
 }

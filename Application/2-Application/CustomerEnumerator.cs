@@ -1,4 +1,5 @@
-﻿using CompraVenta.Domain.Entities;
+﻿using CompraVenta.Application.DTO;
+using CompraVenta.Domain.Entities;
 using CompraVenta.Domain.Repositories;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,20 @@ namespace CompraVenta.Application
             this.repository = repository;
         }
 
-        public List<Customer> Execute()
+        public List<CustomerDTO> Execute()
         {
-            return this.repository.GetAll();
+            List<CustomerDTO> customersDTO = new List<CustomerDTO>();
+            foreach (Customer actualCustomer in this.repository.GetAll())
+            {
+                customersDTO.Add(
+                    new CustomerDTO(
+                        actualCustomer.Name(),
+                        actualCustomer.Email(),
+                        actualCustomer.DateOfBirth()
+                    )
+                );
+            }
+            return customersDTO;
         }
     }
 }
