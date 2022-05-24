@@ -35,7 +35,7 @@ namespace CompraVenta
                 "amartinez@gmail.com",
                 DateTime.Parse("1995-01-01")
             );
-            customerCreator.Execute(customer);
+            customerCreator.Execute(customer2);
 
             foreach (CustomerDTO actualCustomer in customerEnumerator.Execute())
             {

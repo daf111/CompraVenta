@@ -1,5 +1,6 @@
 ﻿using CompraVenta.Domain.Entities;
 using CompraVenta.Domain.Repositories;
+using CompraVenta.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,10 @@ namespace CompraVenta.DataInfraestructure.Repositories
         public Customer GetById(Guid id)
         {
             return this.customers.Find(customer => customer.Id() == id);
+        }
+        public Customer GetByEmail(Email email)
+        {
+            return this.customers.Find(customer => customer.Email() == email.Value());
         }
     }
 }

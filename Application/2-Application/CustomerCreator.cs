@@ -1,6 +1,7 @@
 ﻿using CompraVenta.Application.DTO;
 using CompraVenta.Domain.Entities;
 using CompraVenta.Domain.Repositories;
+using CompraVenta.Domain.ValueObjects;
 using System;
 
 namespace CompraVenta.Application
@@ -16,6 +17,8 @@ namespace CompraVenta.Application
 
         public void Execute(CustomerDTO customerDTO)
         {
+            this.shouldNotExistsCustomerWithEmail(customerDTO.Email());
+
             this.repository.Add(
                 Customer.CreateNewCustomer(
                     customerDTO.Name(),
@@ -23,6 +26,17 @@ namespace CompraVenta.Application
                     customerDTO.DateOfBirth()
                 )
             );
+        }
+
+        private void shouldNotExistsCustomerWithEmail(string email)
+        {
+            Customer customer = this.repository.GetByEmail(
+                new Email(email)
+            );
+            if (customer != null)
+            {
+                throw new Exception("This email is in use by another Customer");
+            }
         }
     }
 }
