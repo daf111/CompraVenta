@@ -11,7 +11,7 @@ namespace UnitTest
         public void Customer_Age_ValidAge()
         {
             //Arrange
-            Customer customer = new Customer(
+            Customer customer = Customer.CreateNewCustomer(
                 "Juan Perez",
                 "jperez@gmail.com",
                 DateTime.Parse("2000-01-01")

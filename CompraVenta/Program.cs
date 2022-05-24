@@ -1,7 +1,5 @@
 ﻿using CompraVenta.Application;
 using CompraVenta.Application.DTO;
-using CompraVenta.DataInfraestructure.Repositories;
-using CompraVenta.Domain.Repositories;
 using System;
 
 /*
@@ -19,9 +17,9 @@ namespace CompraVenta
     {
         static void Main(string[] args)
         {
-            CustomerRepository repository = new CustomerInMemoryRepository();
-            CustomerCreator customerCreator = new CustomerCreator(repository);
-            CustomerEnumerator customerEnumerator = new CustomerEnumerator(repository);
+            DependencyInjectionManager diManager = new DependencyInjectionManager();
+            CustomerCreator customerCreator = diManager.Resolve<CustomerCreator>();
+            CustomerEnumerator customerEnumerator = diManager.Resolve<CustomerEnumerator>();
 
             CustomerDTO customer = new CustomerDTO(
                 "Juan Perez",
